@@ -1,0 +1,13 @@
+# ninja log v5
+6	1040	7080447886497894	CMakeFiles/DudeDumper.dir/main.cpp.obj	7c7a88b6fd93db7d
+1040	1201	7080447888043968	DudeDumper.exe	d6ee1170718f55d1
+6	1136	7080447232080799	CMakeFiles/DudeDumper.dir/memory.cpp.obj	e13977e15467f307
+4	637	7080556304616108	CMakeFiles/DudeDumper.dir/main.cpp.obj	6055bd3717bdfd84
+7	673	7080556304966869	CMakeFiles/DudeDumper.dir/memory.cpp.obj	2d79ba4b1b38a58d
+673	777	7080556305984981	DudeDumper.exe	d6ee1170718f55d1
+3	547	7080556584867857	CMakeFiles/DudeDumper.dir/main.cpp.obj	6055bd3717bdfd84
+547	634	7080556585713691	DudeDumper.exe	d6ee1170718f55d1
+3	549	7080556666062870	CMakeFiles/DudeDumper.dir/main.cpp.obj	6055bd3717bdfd84
+549	634	7080556666881689	DudeDumper.exe	d6ee1170718f55d1
+3	571	7080557039003216	CMakeFiles/DudeDumper.dir/main.cpp.obj	6055bd3717bdfd84
+572	659	7080557039844379	DudeDumper.exe	d6ee1170718f55d1

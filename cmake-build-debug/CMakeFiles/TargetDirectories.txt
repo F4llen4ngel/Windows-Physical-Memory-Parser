@@ -1,0 +1,3 @@
+C:/Users/vanya/Desktop/DudeDumper/cmake-build-debug/CMakeFiles/DudeDumper.dir
+C:/Users/vanya/Desktop/DudeDumper/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/vanya/Desktop/DudeDumper/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,19 +1,19 @@
 //
 // Created by vanya on 6/9/2023.
 //
+#include <cstdint>
 
 #ifndef DUDEDUMPER_STRUCTS_H
 #define DUDEDUMPER_STRUCTS_H
 
-#define LONG long
-#define UCHAR unsigned char
-#define ULONG unsigned long
-#define ULONGLONG unsigned long long
-#define USHORT unsigned short
-#define LONGLONG long long
+#define LONG int32_t
+#define UCHAR uint8_t
+#define ULONG uint32_t
+#define ULONGLONG uint64_t
+#define USHORT uint16_t
+#define LONGLONG int64_t
 #define VOID void
-#define CHAR char
-
+#define CHAR int8_t
 
 //0x10 bytes (sizeof)
 struct _LIST_ENTRY

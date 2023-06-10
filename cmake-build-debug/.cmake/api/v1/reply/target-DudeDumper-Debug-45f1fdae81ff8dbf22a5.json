@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "DudeDumper.exe"
-		},
-		{
-			"path" : "DudeDumper.pdb"
+			"path" : "DudeDumper"
 		}
 	],
 	"backtrace" : 1,
@@ -38,10 +35,10 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics"
 				},
 				{
-					"fragment" : "-std=gnu++23"
+					"fragment" : "-std=gnu++2b"
 				}
 			],
 			"language" : "CXX",
@@ -72,16 +69,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "DudeDumper",
-	"nameOnDisk" : "DudeDumper.exe",
+	"nameOnDisk" : "DudeDumper",
 	"paths" : 
 	{
 		"build" : ".",

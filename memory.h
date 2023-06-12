@@ -10,5 +10,11 @@
 
 #ifndef DUDEDUMPER_MEMORY_H
 #define DUDEDUMPER_MEMORY_H
-std::ptrdiff_t find_system_process_address(const std::string& filename);
+
+bool validateKProcess(uint64_t kProcessAddress, std::ifstream& file);
+std::ptrdiff_t findSystemKProcessAddress(std::ifstream& file);
+uint64_t virtualToPhysicalAddress(uint64_t VirtualAddress, uint64_t DirectoryTableBase, std::ifstream& file);
+void printNextProcessName(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream& file);
+bool readPhysicalMemory(uint64_t physicalAddress, void* buffer, size_t size, std::ifstream& file);
+
 #endif //DUDEDUMPER_MEMORY_H

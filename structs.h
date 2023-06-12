@@ -16,38 +16,15 @@
 #define CHAR int8_t
 #define SHORT int16_t
 
-/*
- * Generic macros that allow you to quickly determine whether
- *  or not a page table entry is present or may forward to a
- *  large page of data, rather than another page table (applies
- *  only to PDPTEs and PDEs)
- */
-#define IS_LARGE_PAGE(x)    ((bool)((x >> 7) & 1) )
-#define IS_PAGE_PRESENT(x)  ((bool)(x & 1) )
 
-/*
- * Macros allowing us to more easily deal with page offsets.
- *
- * The *_SHIFT values will allow us to correctly format physical
- *  addresses obtained using the bitfield structures below.
- *
- * The *_OFFSET macro functions will pull out physical page
- *  offsets from virtual addresses. This is only really to make handling
- *  1GB huge pages and 2MB large pages easier.
- * An example: 2MB large pages will require a 21-bit offset to index
- *  page data at one-byte granularity. So if we have the physical base address
- *  of a 2MB large page, in order to get the right physical address for our
- *  target data, we need to add the bottom 21-bits of a virtual address to this
-*   base address. MAXuint64_t is simply a 64-bit value with every possible bit
-*   set (0xFFFFFFFF`FFFFFFFF). In the case of a 2MB large page, we need the
-*   bottom 21-bits from a virtual address to index, so we apply a function which
-*   shifts this MAXuint64_t value by 21-bits, and then inverts all of the bits to
- *  create a mask that can pull out the bottom 21-bits of a target virtual
- *  address. The resulting mask is a value with only the bottom 21-bits of a 64-bit
- *  value set (0x1FFFFF). The below macro functions just make use of previous
- *  macros to make calculating this value easier, which sticks to theory and
- *  avoids magic values that have not yet been explained.
- */
+struct Process {
+    uint64_t KProcessAddress;
+    uint64_t DirectoryTableBase;
+    std::string ProcessName;
+};
+
+#define IS_LARGE_PAGE(x)    ((bool)((x >> 7) & 1) )
+#define IS_PAGE_PRESENT(x)  ((bool)(x & 1))
 
 #define PAGE_1GB_SHIFT      30
 #define PAGE_1GB_OFFSET(x)  ( x & (~(UINT64_MAX << PAGE_1GB_SHIFT)) )

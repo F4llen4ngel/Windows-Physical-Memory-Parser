@@ -13,5 +13,8 @@ int main() {
     uint64_t dtb;
     readPhysicalMemory(address + 0x28, &dtb, sizeof(uint64_t), file);
     std::cout << "System DirectoryTableBase: " << std::hex << dtb << '\n';
-    printNextProcessName(address, dtb, file);
+    std::vector<Process> processes = getProcessList(address, dtb, file);
+    for (auto &process : processes) {
+        std::cout << process.ProcessName <<  " " << process.KProcessAddress << " " << process.DirectoryTableBase << '\n';
+    }
 }

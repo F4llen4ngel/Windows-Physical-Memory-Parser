@@ -1,2 +1,6 @@
 
 MEMORY.DMP
+
+cmake-build-debug/
+
+*.raw

@@ -3,4 +3,4 @@ project(DudeDumper)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(DudeDumper main.cpp structs.h memory.cpp memory.h)
+add_executable(DudeDumper main.cpp structs.h memory.cpp memory.h memoryTest.cpp)

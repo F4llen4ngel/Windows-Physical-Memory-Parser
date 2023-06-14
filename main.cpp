@@ -17,4 +17,6 @@ int main() {
     for (auto &process : processes) {
         std::cout << process.ProcessName <<  " " << process.KProcessAddress << " " << process.DirectoryTableBase << '\n';
     }
+    std::cout << "------------------------------------------\n";
+    testShit(address, dtb, file);
 }

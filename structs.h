@@ -23,6 +23,10 @@ struct Process {
     std::string ProcessName;
 };
 
+struct Page {
+    uint8_t buffer[4096];
+};
+
 #define IS_LARGE_PAGE(x)    ((bool)((x >> 7) & 1) )
 #define IS_PAGE_PRESENT(x)  ((bool)(x & 1))
 
@@ -1444,6 +1448,146 @@ struct _PP_LOOKASIDE_LIST
     struct _GENERAL_LOOKASIDE* L;                                           //0x8
 };
 
+//0x4 bytes (sizeof)
+struct _MMVAD_FLAGS
+{
+    ULONG Lock:1;                                                           //0x0
+    ULONG LockContended:1;                                                  //0x0
+    ULONG DeleteInProgress:1;                                               //0x0
+    ULONG NoChange:1;                                                       //0x0
+    ULONG VadType:3;                                                        //0x0
+    ULONG Protection:5;                                                     //0x0
+    ULONG PreferredNode:6;                                                  //0x0
+    ULONG PageSize:2;                                                       //0x0
+    ULONG PrivateMemory:1;                                                  //0x0
+};
 
+//0x4 bytes (sizeof)
+struct _MM_PRIVATE_VAD_FLAGS
+{
+    ULONG Lock:1;                                                           //0x0
+    ULONG LockContended:1;                                                  //0x0
+    ULONG DeleteInProgress:1;                                               //0x0
+    ULONG NoChange:1;                                                       //0x0
+    ULONG VadType:3;                                                        //0x0
+    ULONG Protection:5;                                                     //0x0
+    ULONG PreferredNode:6;                                                  //0x0
+    ULONG PageSize:2;                                                       //0x0
+    ULONG PrivateMemoryAlwaysSet:1;                                         //0x0
+    ULONG WriteWatch:1;                                                     //0x0
+    ULONG FixedLargePageSize:1;                                             //0x0
+    ULONG ZeroFillPagesOptional:1;                                          //0x0
+    ULONG Graphics:1;                                                       //0x0
+    ULONG Enclave:1;                                                        //0x0
+    ULONG ShadowStack:1;                                                    //0x0
+    ULONG PhysicalMemoryPfnsReferenced:1;                                   //0x0
+};
+
+//0x4 bytes (sizeof)
+struct _MM_GRAPHICS_VAD_FLAGS
+{
+    ULONG Lock:1;                                                           //0x0
+    ULONG LockContended:1;                                                  //0x0
+    ULONG DeleteInProgress:1;                                               //0x0
+    ULONG NoChange:1;                                                       //0x0
+    ULONG VadType:3;                                                        //0x0
+    ULONG Protection:5;                                                     //0x0
+    ULONG PreferredNode:6;                                                  //0x0
+    ULONG PageSize:2;                                                       //0x0
+    ULONG PrivateMemoryAlwaysSet:1;                                         //0x0
+    ULONG WriteWatch:1;                                                     //0x0
+    ULONG FixedLargePageSize:1;                                             //0x0
+    ULONG ZeroFillPagesOptional:1;                                          //0x0
+    ULONG GraphicsAlwaysSet:1;                                              //0x0
+    ULONG GraphicsUseCoherentBus:1;                                         //0x0
+    ULONG GraphicsNoCache:1;                                                //0x0
+    ULONG GraphicsPageProtection:3;                                         //0x0
+};
+
+//0x4 bytes (sizeof)
+struct _MM_SHARED_VAD_FLAGS
+{
+    ULONG Lock:1;                                                           //0x0
+    ULONG LockContended:1;                                                  //0x0
+    ULONG DeleteInProgress:1;                                               //0x0
+    ULONG NoChange:1;                                                       //0x0
+    ULONG VadType:3;                                                        //0x0
+    ULONG Protection:5;                                                     //0x0
+    ULONG PreferredNode:6;                                                  //0x0
+    ULONG PageSize:2;                                                       //0x0
+    ULONG PrivateMemoryAlwaysClear:1;                                       //0x0
+    ULONG PrivateFixup:1;                                                   //0x0
+    ULONG HotPatchAllowed:1;                                                //0x0
+};
+
+//0x4 bytes (sizeof)
+struct _MMVAD_FLAGS1
+{
+    ULONG CommitCharge:31;                                                  //0x0
+    ULONG MemCommit:1;                                                      //0x0
+};
+
+//0x18 bytes (sizeof)
+struct _KGATE
+{
+    struct _DISPATCHER_HEADER Header;                                       //0x0
+};
+
+//0x4 bytes (sizeof)
+struct _MMSECURE_FLAGS
+{
+    ULONG ReadOnly:1;                                                       //0x0
+    ULONG ReadWrite:1;                                                      //0x0
+    ULONG SecNoChange:1;                                                    //0x0
+    ULONG NoDelete:1;                                                       //0x0
+    ULONG RequiresPteReversal:1;                                            //0x0
+    ULONG ExclusiveSecure:1;                                                //0x0
+    ULONG UserModeOnly:1;                                                   //0x0
+    ULONG NoInherit:1;                                                      //0x0
+    ULONG CheckVad:1;                                                       //0x0
+    ULONG Spare:3;                                                          //0x0
+};
+
+//0x10 bytes (sizeof)
+struct _MMADDRESS_LIST
+{
+    union
+    {
+        struct _MMSECURE_FLAGS Flags;                                       //0x0
+        ULONG FlagsLong;                                                    //0x0
+        VOID* StartVa;                                                      //0x0
+    } u1;                                                                   //0x0
+    VOID* EndVa;                                                            //0x8
+};
+
+//0x10 bytes (sizeof)
+struct _RTL_BITMAP_EX
+{
+    ULONGLONG SizeOfBitMap;                                                 //0x0
+    ULONGLONG* Buffer;                                                      //0x8
+};
+
+//0x10 bytes (sizeof)
+struct _SLIST_ENTRY
+{
+    struct _SLIST_ENTRY* Next;                                              //0x0
+};
+
+//0x18 bytes (sizeof)
+struct _KEVENT
+{
+    struct _DISPATCHER_HEADER Header;                                       //0x0
+};
+
+//0x10 bytes (sizeof)
+struct _IO_STATUS_BLOCK
+{
+    union
+    {
+        LONG Status;                                                        //0x0
+        VOID* Pointer;                                                      //0x0
+    };
+    ULONGLONG Information;                                                  //0x8
+};
 
 #endif //DUDEDUMPER_STRUCTS_H

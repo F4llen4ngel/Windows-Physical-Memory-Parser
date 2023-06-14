@@ -148,6 +148,11 @@ uint64_t getNextProcessKProcess(uint64_t kProcessAddress, uint64_t DirectoryTabl
     uint64_t flinkPhysAddr = virtualToPhysicalAddress(flinkVirtAddr, DirectoryTableBase, file);
 
     uint64_t nextProcessKProcess = flinkPhysAddr - 0x448;
+    uint64_t nextProcessDirectoryTableBase;
+    readPhysicalMemory(nextProcessKProcess + 0x28, &nextProcessDirectoryTableBase, sizeof(uint64_t), file);
+
+    // shit check
+    std::cout << "System(?) KProcess address: " << getPreviousProcessKProcess(nextProcessKProcess, nextProcessDirectoryTableBase, file) << '\n';
 
     return nextProcessKProcess;
 }
@@ -208,4 +213,106 @@ void printNextProcessName(uint64_t kProcessAddress, uint64_t DirectoryTableBase,
         curProcessKProcess = nextProcessKProcess;
     } while (curProcessName != "System");
 
+}
+
+uint64_t getLeftNodePhysicalAddress(_RTL_BALANCED_NODE node, uint64_t DirectoryTableBase, std::ifstream &file) {
+    auto leftNodeVirtAddr = reinterpret_cast<uint64_t>(node.Left);
+    uint64_t leftNodePhysicalAddr = virtualToPhysicalAddress(leftNodeVirtAddr, DirectoryTableBase, file);
+    return leftNodePhysicalAddr;
+}
+
+uint64_t getRightNodePhysicalAddress(_RTL_BALANCED_NODE node, uint64_t DirectoryTableBase, std::ifstream &file) {
+    auto rightNodeVirtAddr = reinterpret_cast<uint64_t>(node.Right);
+    uint64_t rightNodePhysicalAddr = virtualToPhysicalAddress(rightNodeVirtAddr, DirectoryTableBase, file);
+    return rightNodePhysicalAddr;
+}
+
+uint64_t getParentNodePhysicalAddress(_RTL_BALANCED_NODE node, uint64_t DirectoryTableBase, std::ifstream &file) {
+    auto parentNodeVirtAddr = reinterpret_cast<uint64_t>(node.ParentValue) & (~(0x3));
+    uint64_t parentNodePhysicalAddr = virtualToPhysicalAddress(parentNodeVirtAddr, DirectoryTableBase, file);
+    return parentNodePhysicalAddr;
+}
+
+uint64_t getVadRootPhysAddress(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream &file) {
+    uint64_t vadRootVirtAddr;
+    readPhysicalMemory(kProcessAddress + 0x7d8, &vadRootVirtAddr, sizeof(uint64_t), file);
+
+    uint64_t vadRootPhysAddr = virtualToPhysicalAddress(vadRootVirtAddr, DirectoryTableBase, file);
+
+    return vadRootPhysAddr;
+}
+
+void readNodeMemoryPages(uint64_t curNodePhysAddr, uint64_t DirectoryTableBase, std::ifstream& file)
+{
+    ULONG StartingVpn, EndingVpn;
+    UCHAR StartingVpnHigh, EndingVpnHigh;
+
+    readPhysicalMemory(curNodePhysAddr + 0x18, &StartingVpn, sizeof(ULONG), file);
+    readPhysicalMemory(curNodePhysAddr + 0x1c, &EndingVpn, sizeof(ULONG), file);
+
+    readPhysicalMemory(curNodePhysAddr + 0x20, &StartingVpnHigh, sizeof(UCHAR), file);
+    readPhysicalMemory(curNodePhysAddr + 0x21, &EndingVpnHigh, sizeof(UCHAR), file);
+
+    // https://github.com/volatilityfoundation/volatility/blob/master/volatility/plugins/overlays/windows/vad_vtypes.py#L476
+    uint64_t startingVpnVirtualAddress = (((uint64_t)StartingVpn) << 12) | (((uint64_t)StartingVpnHigh) << 44);
+    uint64_t endingVpnVirtualAddress = (((uint64_t)EndingVpn) << 12) | (((uint64_t)EndingVpnHigh) << 44);
+
+    std::cout << "Starting VPN: " << std::hex << startingVpnVirtualAddress << " Ending VPN: " << endingVpnVirtualAddress << '\n';
+
+    uint64_t startingVpnPhysicalAddress = virtualToPhysicalAddress(startingVpnVirtualAddress, DirectoryTableBase, file);
+    uint64_t endingVpnPhysicalAddress = virtualToPhysicalAddress(endingVpnVirtualAddress, DirectoryTableBase, file);
+
+    std::cout << "Starting VPN physical address: " << std::hex << startingVpnPhysicalAddress << " Ending VPN physical address: " << endingVpnPhysicalAddress << '\n';
+
+    uint64_t numPages = (endingVpnVirtualAddress - startingVpnVirtualAddress) / 4096;
+
+    std::vector<Page> pages;
+
+    for (int64_t i = 0; i < numPages; ++i) {
+        uint64_t pageVirtualAddress = startingVpnVirtualAddress + i * 4096;
+        uint64_t pagePhysicalAddress = virtualToPhysicalAddress(pageVirtualAddress, DirectoryTableBase, file);
+        std::cout << "Page virtual address: " << std::hex << pageVirtualAddress << " Page physical address: " << pagePhysicalAddress << '\n';
+        Page page{};
+        readPhysicalMemory(pagePhysicalAddress, &page, sizeof(Page), file);
+        pages.push_back(page);
+        std::cout << "Page buffer: " << std::hex << page.buffer << '\n';
+    }
+
+}
+
+void traverseVadTree(uint64_t curNodePhysAddr, uint64_t DirectoryTableBase, std::ifstream& file)
+{
+    _RTL_BALANCED_NODE curNode{};
+    readPhysicalMemory(curNodePhysAddr, &curNode, sizeof(_RTL_BALANCED_NODE), file);
+
+}
+
+void getProcessMemorySpace(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream& file)
+{
+    uint64_t vadRootPhysAddr = getVadRootPhysAddress(kProcessAddress, DirectoryTableBase, file);
+
+    std::cout << "Vad root physical address: " << std::hex << vadRootPhysAddr << '\n';
+
+    _RTL_BALANCED_NODE vadRoot{};
+    readPhysicalMemory(vadRootPhysAddr, &vadRoot, sizeof(_RTL_BALANCED_NODE), file);
+
+
+    std::cout << "Left node: " << getLeftNodePhysicalAddress(vadRoot, DirectoryTableBase, file) << '\n';
+    std::cout << "Right node: " << getRightNodePhysicalAddress(vadRoot, DirectoryTableBase, file) << '\n';
+
+    ULONG StartingVpn, EndingVpn;
+    UCHAR StartingVpnHigh, EndingVpnHigh;
+
+    readPhysicalMemory(vadRootPhysAddr + 0x18, &StartingVpn, sizeof(ULONG), file);
+    readPhysicalMemory(vadRootPhysAddr + 0x1c, &EndingVpn, sizeof(ULONG), file);
+    readPhysicalMemory(vadRootPhysAddr + 0x20, &StartingVpnHigh, sizeof(UCHAR), file);
+    readPhysicalMemory(vadRootPhysAddr + 0x21, &EndingVpnHigh, sizeof(UCHAR), file);
+
+    std::cout << "Starting VPN: " << std::hex << StartingVpn << " Ending VPN: " << EndingVpn << '\n';
+    std::cout << "Starting VPN high: " << std::hex << StartingVpnHigh << " Ending VPN high: " << EndingVpnHigh << '\n';
+
+    LONG ReferenceCount;
+    readPhysicalMemory(vadRootPhysAddr + 0x24, &ReferenceCount, sizeof(LONG), file);
+
+    std::cout << "Reference count: " << std::dec << ReferenceCount << '\n';
 }

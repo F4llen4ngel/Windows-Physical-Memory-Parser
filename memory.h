@@ -20,5 +20,6 @@ uint64_t getNextProcessKProcess(uint64_t kProcessAddress, uint64_t DirectoryTabl
 uint64_t getPreviousProcessKProcess(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream& file);
 std::string getProcessName(uint64_t kProcessAddress, std::ifstream& file);
 std::vector<Process> getProcessList(uint64_t systemKProcessAddress, uint64_t systemDirectoryTableBase, std::ifstream &file);
+void getProcessMemorySpace(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream& file);
 
 #endif //DUDEDUMPER_MEMORY_H

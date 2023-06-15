@@ -4,3 +4,5 @@ project(DudeDumper)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(DudeDumper main.cpp structs.h memory.cpp memory.h memoryTest.cpp)
+find_package(imgui CONFIG REQUIRED)
+target_link_libraries(main PRIVATE imgui::imgui)

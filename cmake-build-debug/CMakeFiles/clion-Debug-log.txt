@@ -1,4 +1,6 @@
-"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S Z:\dev\Win11PhysMemoryParser -B Z:\dev\Win11PhysMemoryParser\cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: Z:/dev/Win11PhysMemoryParser/cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\123\Documents\GitHub\Win11PhysMemoryParser -B C:\Users\123\Documents\GitHub\Win11PhysMemoryParser\cmake-build-debug
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  CMake 3.25 or higher is required.  You are running version 3.24.2
+
+
+-- Configuring incomplete, errors occurred!

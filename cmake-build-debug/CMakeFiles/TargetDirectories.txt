@@ -1,3 +1,4 @@
 /Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/CMakeFiles/DudeDumper.dir
+/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/CMakeFiles/DudeDumperTest.dir
 /Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/CMakeFiles/rebuild_cache.dir

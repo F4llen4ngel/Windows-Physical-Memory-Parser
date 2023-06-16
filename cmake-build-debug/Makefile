@@ -129,6 +129,19 @@ DudeDumper/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/build
 .PHONY : DudeDumper/fast
 
+#=============================================================================
+# Target rules for targets named DudeDumperTest
+
+# Build rule for target.
+DudeDumperTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DudeDumperTest
+.PHONY : DudeDumperTest
+
+# fast build rule for target.
+DudeDumperTest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/build
+.PHONY : DudeDumperTest/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -159,6 +172,7 @@ memory.o: memory.cpp.o
 # target to build an object file
 memory.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/memory.cpp.o
 .PHONY : memory.cpp.o
 
 memory.i: memory.cpp.i
@@ -167,6 +181,7 @@ memory.i: memory.cpp.i
 # target to preprocess a source file
 memory.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/memory.cpp.i
 .PHONY : memory.cpp.i
 
 memory.s: memory.cpp.s
@@ -175,6 +190,7 @@ memory.s: memory.cpp.s
 # target to generate assembly for a file
 memory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/memory.cpp.s
 .PHONY : memory.cpp.s
 
 memoryTest.o: memoryTest.cpp.o
@@ -182,7 +198,7 @@ memoryTest.o: memoryTest.cpp.o
 
 # target to build an object file
 memoryTest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memoryTest.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/memoryTest.cpp.o
 .PHONY : memoryTest.cpp.o
 
 memoryTest.i: memoryTest.cpp.i
@@ -190,7 +206,7 @@ memoryTest.i: memoryTest.cpp.i
 
 # target to preprocess a source file
 memoryTest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memoryTest.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/memoryTest.cpp.i
 .PHONY : memoryTest.cpp.i
 
 memoryTest.s: memoryTest.cpp.s
@@ -198,7 +214,7 @@ memoryTest.s: memoryTest.cpp.s
 
 # target to generate assembly for a file
 memoryTest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memoryTest.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumperTest.dir/build.make CMakeFiles/DudeDumperTest.dir/memoryTest.cpp.s
 .PHONY : memoryTest.cpp.s
 
 # Help Target
@@ -210,6 +226,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DudeDumper"
+	@echo "... DudeDumperTest"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

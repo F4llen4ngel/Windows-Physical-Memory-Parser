@@ -5,7 +5,7 @@
 		<Option title="DudeDumper"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\.clion-vcpkg\;CMake Files\..\..\.clion-vcpkg\vcpkg\;CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\;CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\buildsystems\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug"/>
@@ -24,6 +24,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/ivanlebedev/.clion-vcpkg/vcpkg/installed/arm64-osx/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -44,6 +45,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/ivanlebedev/.clion-vcpkg/vcpkg/installed/arm64-osx/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -52,6 +54,48 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 DudeDumper/fast"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DudeDumperTest">
+				<Option output="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/DudeDumperTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/ivanlebedev/.clion-vcpkg/vcpkg/installed/arm64-osx/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 DudeDumperTest"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DudeDumperTest/fast">
+				<Option output="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/DudeDumperTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/ivanlebedev/.clion-vcpkg/vcpkg/installed/arm64-osx/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 DudeDumperTest/fast"/>
 					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -83,18 +127,41 @@
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memory.cpp">
 			<Option target="DudeDumper"/>
+			<Option target="DudeDumperTest"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memory.h">
 			<Option target="DudeDumper"/>
+			<Option target="DudeDumperTest"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memoryTest.cpp">
-			<Option target="DudeDumper"/>
-		</Unit>
-		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/structs.h">
-			<Option target="DudeDumper"/>
+			<Option target="DudeDumperTest"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\buildsystems\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/doctest/doctestConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/doctest/doctestConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/doctest/doctestTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

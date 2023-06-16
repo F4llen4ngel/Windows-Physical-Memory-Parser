@@ -177,6 +177,30 @@ memory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memory.cpp.s
 .PHONY : memory.cpp.s
 
+memoryTest.o: memoryTest.cpp.o
+.PHONY : memoryTest.o
+
+# target to build an object file
+memoryTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memoryTest.cpp.o
+.PHONY : memoryTest.cpp.o
+
+memoryTest.i: memoryTest.cpp.i
+.PHONY : memoryTest.i
+
+# target to preprocess a source file
+memoryTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memoryTest.cpp.i
+.PHONY : memoryTest.cpp.i
+
+memoryTest.s: memoryTest.cpp.s
+.PHONY : memoryTest.s
+
+# target to generate assembly for a file
+memoryTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DudeDumper.dir/build.make CMakeFiles/DudeDumper.dir/memoryTest.cpp.s
+.PHONY : memoryTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... memory.o"
 	@echo "... memory.i"
 	@echo "... memory.s"
+	@echo "... memoryTest.o"
+	@echo "... memoryTest.i"
+	@echo "... memoryTest.s"
 .PHONY : help
 
 

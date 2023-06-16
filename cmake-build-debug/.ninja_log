@@ -1,6 +1,0 @@
-# ninja log v5
-3	532	7083755338732369	CMakeFiles/DudeDumper.dir/main.cpp.obj	71c508697bca8287
-641	738	7084202414691145	DudeDumper.exe	f795419366ade00a
-3	641	7084202413750450	CMakeFiles/DudeDumper.dir/memory.cpp.obj	3ac32e7d48876fc0
-7	53	7082274591263239	CMakeFiles/DudeDumper.dir/memoryTest.cpp.obj	4129099092698eb7
-0	88	7082272313569519	build.ninja	194cbd3d6a54028

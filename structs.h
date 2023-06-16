@@ -17,6 +17,25 @@
 #define SHORT int16_t
 
 
+#define _CR3 0x1ad000
+#define PAGE_SIZE 0x1000
+#define IMAGE_FILE_NAME 0x5a8
+#define ACTIVE_PROCESS_LINKS_FLINK 0x448
+#define ACTIVE_PROCESS_LINKS_BLINK 0x450
+#define DIRECTORY_TABLE_BASE 0x28
+#define VAD_ROOT 0x7d8
+#define RIGHT_CHILD 0x8
+#define PARENT_VALUE 0x10
+#define STARTING_VPN 0x18
+#define ENDING_VPN 0x1c
+#define STARTING_VPN_HIGH 0x20
+#define ENDING_VPN_HIGH 0x21
+
+struct VadNode {
+    uint64_t startAddress;
+    uint64_t endAddress;
+};
+
 struct Process {
     uint64_t KProcessAddress;
     uint64_t DirectoryTableBase;

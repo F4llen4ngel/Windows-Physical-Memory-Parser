@@ -87,6 +87,9 @@
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memory.h">
 			<Option target="DudeDumper"/>
 		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memoryTest.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/structs.h">
 			<Option target="DudeDumper"/>
 		</Unit>

@@ -64,6 +64,7 @@ bool readPhysicalMemory(uint64_t physicalAddress, void *buffer, size_t size, std
 
     if (file.fail()) {
         std::cerr << "Failed to seek to the physicalAddress position in the file\n";
+        file.clear();
         return false;
     }
 
@@ -71,6 +72,7 @@ bool readPhysicalMemory(uint64_t physicalAddress, void *buffer, size_t size, std
 
     if (file.fail()) {
         std::cerr << "Failed to read the physicalAddress from the file\n";
+        file.clear();
         return false;
     }
 

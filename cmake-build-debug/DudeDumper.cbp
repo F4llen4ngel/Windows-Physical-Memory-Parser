@@ -5,7 +5,7 @@
 		<Option title="DudeDumper"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\.clion-vcpkg\;CMake Files\..\..\.clion-vcpkg\vcpkg\;CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\;CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\buildsystems\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\.clion-vcpkg\;CMake Files\..\..\.clion-vcpkg\vcpkg\;CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\;CMake Files\..\..\.clion-vcpkg\vcpkg\scripts\buildsystems\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\;CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\opt\;CMake Files\..\..\..\..\opt\homebrew\;CMake Files\..\..\..\..\opt\homebrew\lib\;CMake Files\..\..\..\..\opt\homebrew\lib\cmake\;CMake Files\..\..\..\..\opt\homebrew\lib\cmake\glfw3\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug"/>
@@ -24,7 +24,12 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/ivanlebedev/.clion-vcpkg/vcpkg/installed/arm64-osx/include"/>
+					<Add directory="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui"/>
+					<Add directory="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/backends"/>
+					<Add directory="/Users/ivanlebedev/dev/Win11PhysMemoryParser/FileBrowser"/>
+					<Add directory="/opt/homebrew/Cellar/glfw/3.3.8/include"/>
+					<Add directory="/opt/homebrew/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -45,7 +50,12 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/ivanlebedev/.clion-vcpkg/vcpkg/installed/arm64-osx/include"/>
+					<Add directory="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui"/>
+					<Add directory="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/backends"/>
+					<Add directory="/Users/ivanlebedev/dev/Win11PhysMemoryParser/FileBrowser"/>
+					<Add directory="/opt/homebrew/Cellar/glfw/3.3.8/include"/>
+					<Add directory="/opt/homebrew/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -59,8 +69,8 @@
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="DudeDumperTest">
-				<Option output="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/DudeDumperTest" prefix_auto="0" extension_auto="0"/>
+			<Target title="memoryTest">
+				<Option output="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/memoryTest" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -74,14 +84,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 DudeDumperTest"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 memoryTest"/>
 					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="DudeDumperTest/fast">
-				<Option output="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/DudeDumperTest" prefix_auto="0" extension_auto="0"/>
+			<Target title="memoryTest/fast">
+				<Option output="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/memoryTest" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -95,7 +105,7 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 DudeDumperTest/fast"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 memoryTest/fast"/>
 					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -122,19 +132,73 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/FileBrowser/ImGuiFileBrowser.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/FileBrowser/ImGuiFileBrowser.h">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/GUI.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/GUI.h">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/backends/imgui_impl_glfw.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/backends/imgui_impl_glfw.h">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/backends/imgui_impl_opengl3.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/backends/imgui_impl_opengl3.h">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/imgui.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/imgui.h">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/imgui_demo.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/imgui_draw.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/imgui_tables.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/imgui_widgets.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/implot.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/implot.h">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/implot_demo.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/imgui/implot_items.cpp">
+			<Option target="DudeDumper"/>
+		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/main.cpp">
 			<Option target="DudeDumper"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memory.cpp">
 			<Option target="DudeDumper"/>
-			<Option target="DudeDumperTest"/>
+			<Option target="memoryTest"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memory.h">
 			<Option target="DudeDumper"/>
-			<Option target="DudeDumperTest"/>
+			<Option target="memoryTest"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/memoryTest.cpp">
-			<Option target="DudeDumperTest"/>
+			<Option target="memoryTest"/>
 		</Unit>
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
@@ -151,17 +215,17 @@
 		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/doctest/doctestTargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\doctest\"/>
 		</Unit>
-		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../../../opt/homebrew/lib/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\opt\homebrew\lib\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-targets-debug.cmake">
-			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../../../opt/homebrew/lib/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\opt\homebrew\lib\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-targets-release.cmake">
-			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../../../opt/homebrew/lib/cmake/glfw3/glfw3Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\opt\homebrew\lib\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../.clion-vcpkg/vcpkg/installed/arm64-osx/share/imgui/imgui-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\.clion-vcpkg\vcpkg\installed\arm64-osx\share\imgui\"/>
+		<Unit filename="/Users/ivanlebedev/dev/Win11PhysMemoryParser/../../../../opt/homebrew/lib/cmake/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\opt\homebrew\lib\cmake\glfw3\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

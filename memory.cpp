@@ -44,7 +44,7 @@ std::ptrdiff_t findSystemKProcessAddress(std::ifstream &file)
     }
 
     std::cerr << "'System' _EPROCESS not found\n";
-    return -1;
+    return 0;
 }
 
 
@@ -221,6 +221,10 @@ std::string getProcessName(uint64_t kProcessAddress, std::ifstream &file)
 
     std::string processNameStr{processName};
 
+    if (processNameStr.empty()) {
+        processNameStr = "###";
+    }
+
     return processNameStr;
 }
 
@@ -238,19 +242,25 @@ std::vector<Process> getProcessList(uint64_t systemKProcessAddress, uint64_t sys
 
     uint64_t curProcessKProcess = systemKProcessAddress;
     std::string curProcessName = getProcessName(curProcessKProcess, file);
-    uint64_t curProcessDirectoryTableBase;
+    uint64_t curProcessDirectoryTableBase = systemDirectoryTableBase;
+    std::vector<VadNode> curVadTree = readProcessVadTree(curProcessKProcess, curProcessDirectoryTableBase, file);
+
     Process curProcess{curProcessKProcess,
                        curProcessDirectoryTableBase,
-                       curProcessName};
+                       curProcessName,
+                       curVadTree};
     processList.push_back(curProcess);
 
     do {
         curProcessKProcess = getNextProcessKProcess(curProcessKProcess, systemDirectoryTableBase, file);
         curProcessName = getProcessName(curProcessKProcess, file);
         readPhysicalMemory(curProcessKProcess + DIRECTORY_TABLE_BASE, &curProcessDirectoryTableBase, sizeof(uint64_t), file);
+        curVadTree = readProcessVadTree(curProcessKProcess, curProcessDirectoryTableBase, file);
+
         curProcess = Process{curProcessKProcess,
                            curProcessDirectoryTableBase,
-                           curProcessName};
+                           curProcessName,
+                             curVadTree};
         processList.push_back(curProcess);
 
     } while (curProcessDirectoryTableBase != systemDirectoryTableBase);

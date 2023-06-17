@@ -3,11 +3,55 @@ project(DudeDumper)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(DudeDumper main.cpp memory.cpp)
-add_executable(DudeDumperTest memoryTest.cpp memory.cpp)
+set(SOURCE_FILES
+        ${CMAKE_SOURCE_DIR}/main.cpp
+        ${CMAKE_SOURCE_DIR}/memory.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/imgui.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/imgui_demo.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/imgui_draw.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/imgui_tables.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/imgui_widgets.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/implot.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/implot_demo.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/implot_items.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/backends/imgui_impl_glfw.cpp
+        ${CMAKE_SOURCE_DIR}/imgui/backends/imgui_impl_opengl3.cpp
+        ${CMAKE_SOURCE_DIR}/GUI.cpp
+        ${CMAKE_SOURCE_DIR}/FileBrowser/ImGuiFileBrowser.cpp
+        )
+
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+add_executable(memoryTest memoryTest.cpp memory.cpp)
 
 find_package(doctest CONFIG REQUIRED)
-target_link_libraries(DudeDumperTest PRIVATE doctest::doctest)
+target_link_libraries(memoryTest PRIVATE doctest::doctest)
 
-find_package(imgui CONFIG REQUIRED)
-target_link_libraries(DudeDumper PRIVATE imgui::imgui)
+target_include_directories(${PROJECT_NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/imgui
+        ${CMAKE_SOURCE_DIR}/imgui/backends
+        ${CMAKE_SOURCE_DIR}/FileBrowser
+        )
+
+# GLFW
+find_package(glfw3 3.3 REQUIRED)
+if (glfw3_FOUND)
+    message("glfw found")
+    target_link_libraries(${PROJECT_NAME} glfw)
+endif()
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GLFW REQUIRED glfw3)
+target_include_directories(${PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES})
+
+# OpenGL
+find_package(OpenGL REQUIRED)
+target_link_libraries(${PROJECT_NAME} OpenGL::GL)
+
+# Mac specific frameworks
+if (APPLE)
+    find_library(COCOA_LIBRARY Cocoa)
+    find_library(IOKIT_LIBRARY IOKit)
+    find_library(COREVIDEO_LIBRARY CoreVideo)
+    target_link_libraries(${PROJECT_NAME} ${COCOA_LIBRARY} ${IOKIT_LIBRARY} ${COREVIDEO_LIBRARY})
+endif()

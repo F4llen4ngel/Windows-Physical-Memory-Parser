@@ -1,4 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/Users/ivanlebedev/.clion-vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake -G "CodeBlocks - Unix Makefiles" -S /Users/ivanlebedev/dev/Win11PhysMemoryParser -B /Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug
+glfw found
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/ivanlebedev/dev/Win11PhysMemoryParser/cmake-build-debug

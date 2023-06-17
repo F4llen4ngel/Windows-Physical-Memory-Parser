@@ -40,6 +40,7 @@ struct Process {
     uint64_t KProcessAddress;
     uint64_t DirectoryTableBase;
     std::string ProcessName;
+    std::vector<VadNode> VadTree;
 };
 
 #define IS_LARGE_PAGE(x)    ((bool)((x >> 7) & 1) )

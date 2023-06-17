@@ -12,7 +12,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![product-screenshot]]
+![product-screenshot]
 
 This tool can do the following things after loading your RAM physical dump:
 - Get list of all processes that were running at the moment when the dump was taken

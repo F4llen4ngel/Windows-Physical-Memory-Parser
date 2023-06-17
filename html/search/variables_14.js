@@ -1,0 +1,17 @@
+var searchData=
+[
+  ['u_0',['u',['../union___l_a_r_g_e___i_n_t_e_g_e_r.html#aecbc1d06780e95fb06dc431eb8d7fd0d',1,'_LARGE_INTEGER::u'],['../union___u_l_a_r_g_e___i_n_t_e_g_e_r.html#ad5f7bc236df2e415840fc422340db405',1,'_ULARGE_INTEGER::u']]],
+  ['unconstrainedmaxquota_1',['UnconstrainedMaxQuota',['../struct___k_s_c_b.html#af3ff63567e1e2cc6fa64c25792ed009c',1,'_KSCB']]],
+  ['unconstrainedminquota_2',['UnconstrainedMinQuota',['../struct___k_s_c_b.html#ab33b2fc4d04d359905200f6fb8be1be8',1,'_KSCB']]],
+  ['unused_3',['Unused',['../union___v_i_r_t_u_a_l___m_e_m_o_r_y___a_d_d_r_e_s_s.html#a6341f37673b680c76f3f523c6a126c09',1,'_VIRTUAL_MEMORY_ADDRESS::Unused'],['../union___m_m_p_t_e___h_a_r_d_w_a_r_e.html#a9765418f9827d5e4eeb66185e93385eb',1,'_MMPTE_HARDWARE::Unused'],['../struct___k_p_r_o_c_e_s_s.html#a36b8a7458cd5c2e749b5a58742df1f35',1,'_KPROCESS::Unused']]],
+  ['updatecount_4',['UpdateCount',['../struct___t_h_r_e_a_d___p_e_r_f_o_r_m_a_n_c_e___d_a_t_a.html#accd1807391b9ee5a1060d85103ce5583',1,'_THREAD_PERFORMANCE_DATA']]],
+  ['userapc_5',['UserApc',['../union___k_w_a_i_t___s_t_a_t_u_s___r_e_g_i_s_t_e_r.html#a57be42cf17cf95f9529652355f8b04d3',1,'_KWAIT_STATUS_REGISTER']]],
+  ['userapcpending_6',['UserApcPending',['../struct___k_a_p_c___s_t_a_t_e.html#a8fe036e409638e8fdde31788b13bd26e',1,'_KAPC_STATE']]],
+  ['userapcpendingall_7',['UserApcPendingAll',['../struct___k_a_p_c___s_t_a_t_e.html#a3bd0e0f5e8883c55d801269c4bf3e03e',1,'_KAPC_STATE']]],
+  ['usercetlogging_8',['UserCetLogging',['../struct___k_p_r_o_c_e_s_s.html#a5da54b73ea0d2d00d10308c9e6e98a21',1,'_KPROCESS']]],
+  ['userdata_9',['UserData',['../struct___k_t_h_r_e_a_d___c_o_u_n_t_e_r_s.html#a7a041b177a0daec96a430ed15a6871b6',1,'_KTHREAD_COUNTERS']]],
+  ['userdirectorytablebase_10',['UserDirectoryTableBase',['../struct___k_p_r_o_c_e_s_s.html#add490c4f2455a55506b91f581977ffcd',1,'_KPROCESS']]],
+  ['usersupervisor_11',['UserSupervisor',['../union___p_m_l4___e_n_t_r_y.html#af1c4c1db439d35df3b165b246f3b2c15',1,'_PML4_ENTRY::UserSupervisor'],['../union___p_d_p_t___e_n_t_r_y___l_a_r_g_e.html#a770d20a1071dc157d42fa03722483151',1,'_PDPT_ENTRY_LARGE::UserSupervisor'],['../union___p_d_p_t___e_n_t_r_y.html#a37ef9c616f90f3d3d502fbcc51d75f46',1,'_PDPT_ENTRY::UserSupervisor'],['../union___p_d___e_n_t_r_y___l_a_r_g_e.html#a0f46123c680da3206200c095b748e5b5',1,'_PD_ENTRY_LARGE::UserSupervisor'],['../union___p_d___e_n_t_r_y.html#a8e0312ba51eedc423a5653a54412f75b',1,'_PD_ENTRY::UserSupervisor'],['../union___p_t___e_n_t_r_y.html#aeede21878c66c4898908f3c5bd0fa74b',1,'_PT_ENTRY::UserSupervisor']]],
+  ['usertime_12',['UserTime',['../struct___k_p_r_o_c_e_s_s.html#a8f4818cffc9e97acc00acc871e02be6d',1,'_KPROCESS']]],
+  ['userwaittime_13',['UserWaitTime',['../struct___k_p_r_o_c_e_s_s.html#acbc5a0c46a48ae713e847a73b537014c',1,'_KPROCESS']]]
+];

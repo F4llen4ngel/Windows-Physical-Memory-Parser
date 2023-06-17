@@ -57,6 +57,9 @@ GUI::GUI()
 
 }
 
+/**
+ * Prepares the GUI for rendering
+ */
 void GUI::Prepare()
 {
     glfwPollEvents();
@@ -65,6 +68,9 @@ void GUI::Prepare()
     ImGui::NewFrame();
 }
 
+/**
+ * Renders the GUI
+ */
 void GUI::Render()
 {
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 5.f);
@@ -92,11 +98,17 @@ void GUI::Render()
     glfwSwapBuffers(window);
 }
 
+/**
+ * Returns true if the window is minimized
+ */
 bool GUI::IsMinimized()
 {
     return glfwGetWindowAttrib(window, GLFW_ICONIFIED);
 }
 
+/**
+ * Returns true if the window should close
+ */
 bool GUI::WindowShouldClose()
 {
     if (glfwWindowShouldClose(window))
@@ -108,6 +120,9 @@ bool GUI::WindowShouldClose()
     return false;
 }
 
+/**
+ * Returns the window
+ */
 GLFWwindow* GUI::GetWindow()
 {
     return window;

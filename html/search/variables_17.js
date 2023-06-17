@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['xcr0_0',['Xcr0',['../struct___k_s_p_e_c_i_a_l___r_e_g_i_s_t_e_r_s.html#a3a46bd6b3590135e4b53969b7722604a',1,'_KSPECIAL_REGISTERS']]],
+  ['xmm0_1',['Xmm0',['../struct___k_t_r_a_p___f_r_a_m_e.html#a472301c8f6ab0db2a46efad16d759158',1,'_KTRAP_FRAME::Xmm0'],['../struct___c_o_n_t_e_x_t.html#a0db0afa168e10a0e20370a6d53f6a481',1,'_CONTEXT::Xmm0']]],
+  ['xmm1_2',['Xmm1',['../struct___k_t_r_a_p___f_r_a_m_e.html#a8bfb47121bfd87326b5dd36978fad9ed',1,'_KTRAP_FRAME::Xmm1'],['../struct___c_o_n_t_e_x_t.html#a143f08ba9161546105c028394bd9b77a',1,'_CONTEXT::Xmm1']]],
+  ['xmm10_3',['Xmm10',['../struct___c_o_n_t_e_x_t.html#a9e4715aae89bdf2c5c5301454c29fa6a',1,'_CONTEXT']]],
+  ['xmm11_4',['Xmm11',['../struct___c_o_n_t_e_x_t.html#a017cb23acb3844e2d532d596f466bd88',1,'_CONTEXT']]],
+  ['xmm12_5',['Xmm12',['../struct___c_o_n_t_e_x_t.html#af11003faeae655642cfd6e13a45efc58',1,'_CONTEXT']]],
+  ['xmm13_6',['Xmm13',['../struct___c_o_n_t_e_x_t.html#a63742ed6f9881371111c346b8075fd9f',1,'_CONTEXT']]],
+  ['xmm14_7',['Xmm14',['../struct___c_o_n_t_e_x_t.html#a6a3ce31cb09cd0d0532098a9be0bb7b1',1,'_CONTEXT']]],
+  ['xmm15_8',['Xmm15',['../struct___c_o_n_t_e_x_t.html#a5e78816ca4db0b94593a648d9a92a8bf',1,'_CONTEXT']]],
+  ['xmm2_9',['Xmm2',['../struct___k_t_r_a_p___f_r_a_m_e.html#a1e9651ab886f5fa4a0dcff90f4d14ef6',1,'_KTRAP_FRAME::Xmm2'],['../struct___c_o_n_t_e_x_t.html#ae4d612353f4e553f9806aac272186c8d',1,'_CONTEXT::Xmm2']]],
+  ['xmm3_10',['Xmm3',['../struct___k_t_r_a_p___f_r_a_m_e.html#acc36c74aef45169e518afa269ba6cc01',1,'_KTRAP_FRAME::Xmm3'],['../struct___c_o_n_t_e_x_t.html#a2aaaee20c05647341ae638046a4a9442',1,'_CONTEXT::Xmm3']]],
+  ['xmm4_11',['Xmm4',['../struct___k_t_r_a_p___f_r_a_m_e.html#adaab664d2ab433057c7d7da485fa1088',1,'_KTRAP_FRAME::Xmm4'],['../struct___c_o_n_t_e_x_t.html#af1eff2d8697390eefc9097ef72a530f7',1,'_CONTEXT::Xmm4']]],
+  ['xmm5_12',['Xmm5',['../struct___k_t_r_a_p___f_r_a_m_e.html#a457d4a196f6cb2832d1be599e259a2c5',1,'_KTRAP_FRAME::Xmm5'],['../struct___c_o_n_t_e_x_t.html#ab40c3f9995619cf124a17351f079119a',1,'_CONTEXT::Xmm5']]],
+  ['xmm6_13',['Xmm6',['../struct___c_o_n_t_e_x_t.html#ace0a96b9028656d7a7befa6970c8fd27',1,'_CONTEXT']]],
+  ['xmm7_14',['Xmm7',['../struct___c_o_n_t_e_x_t.html#a8215a82f00bfac4f7462917e5f7286fc',1,'_CONTEXT']]],
+  ['xmm8_15',['Xmm8',['../struct___c_o_n_t_e_x_t.html#a3bc7884dbf35b1e0b40dd56b7425895f',1,'_CONTEXT']]],
+  ['xmm9_16',['Xmm9',['../struct___c_o_n_t_e_x_t.html#afaf1e003a73b8c1a7816ac70f0955793',1,'_CONTEXT']]],
+  ['xmmregisters_17',['XmmRegisters',['../struct___x_s_a_v_e___f_o_r_m_a_t.html#a6cc83df680780515c77031bb3e0a0d67',1,'_XSAVE_FORMAT']]],
+  ['xstatecontext_18',['XStateContext',['../struct___x_s_t_a_t_e___s_a_v_e.html#acd757651c36d3834329fcbcb6c7add92',1,'_XSTATE_SAVE']]]
+];

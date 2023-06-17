@@ -1,16 +1,15 @@
 #include  "memory.h"
 
 
+/**
+ * Validate _KPROCESS structure by checking if System's DirectoryTableBase is equal to _CR3.
+ *
+ * @param kProcessAddress: offset of _KPROCESS structure from the beginning of the file
+ * @param file: file stream
+ * @return: true if _KPROCESS is valid, false otherwise
+ */
 bool validateKProcess(uint64_t kProcessAddress, std::ifstream &file)
 {
-    /*
-     * Validate _KPROCESS structure by checking if System's DirectoryTableBase is equal to _CR3.
-     *
-     * @param kProcessAddress: offset of _KPROCESS structure from the beginning of the file
-     * @param file: file stream
-     * @return: true if _KPROCESS is valid, false otherwise
-     */
-
     _KPROCESS kProcess;
     readPhysicalMemory(kProcessAddress, &kProcess, sizeof(_KPROCESS), file);
 
@@ -21,15 +20,14 @@ bool validateKProcess(uint64_t kProcessAddress, std::ifstream &file)
     return false;
 }
 
+/**
+ * Find the offset of _KPROCESS structure of System process.
+ *
+ * @param file: file stream
+ * @return: offset of _KPROCESS structure of System process
+ */
 std::ptrdiff_t findSystemKProcessAddress(std::ifstream &file)
 {
-    /*
-     * Find the offset of _KPROCESS structure of System process.
-     *
-     * @param file: file stream
-     * @return: offset of _KPROCESS structure of System process
-     */
-
     std::string data(std::istreambuf_iterator<char>(file), {});
 
     std::size_t position = data.find("System");
@@ -48,17 +46,17 @@ std::ptrdiff_t findSystemKProcessAddress(std::ifstream &file)
 }
 
 
+/**
+ * Read physical memory from the file.
+ *
+ * @param physicalAddress: physical address to read from
+ * @param buffer: buffer to store the read data
+ * @param size: size of the buffer
+ * @param file: file stream
+ * @return: true if the physicalAddress was read successfully, false otherwise
+ */
 bool readPhysicalMemory(uint64_t physicalAddress, void *buffer, size_t size, std::ifstream &file)
 {
-    /*
-     * Read physical memory from the file.
-     *
-     * @param physicalAddress: physical address to read from
-     * @param buffer: buffer to store the read data
-     * @param size: size of the buffer
-     * @param file: file stream
-     * @return: true if the physicalAddress was read successfully, false otherwise
-     */
 
     file.seekg(physicalAddress, std::ios::beg);
 
@@ -80,17 +78,16 @@ bool readPhysicalMemory(uint64_t physicalAddress, void *buffer, size_t size, std
 }
 
 
+/**
+ * Convert virtual address to physical address.
+ *
+ * @param VirtualAddress: virtual address to convert
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: physical address
+ */
 uint64_t virtualToPhysicalAddress(uint64_t VirtualAddress, uint64_t DirectoryTableBase, std::ifstream &file)
 {
-    /*
-     * Convert virtual address to physical address.
-     *
-     * @param VirtualAddress: virtual address to convert
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: physical address
-     */
-
     VIRTUAL_ADDRESS virtAddr = {0};
 
     DIR_TABLE_BASE dirTableBase = {0};
@@ -171,16 +168,15 @@ uint64_t virtualToPhysicalAddress(uint64_t VirtualAddress, uint64_t DirectoryTab
 
 }
 
+/**
+ * Get the offset of _KPROCESS structure of the next process in ActiveProcessLinks.
+ * @param kProcessAddress: offset of _KPROCESS structure of the current process
+ * @param DirectoryTableBase: DirectoryTableBase of the current process
+ * @param file: file stream
+ * @return: offset of _KPROCESS structure of the next process
+ */
 uint64_t getNextProcessKProcess(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream &file)
 {
-    /*
-     * Get the offset of _KPROCESS structure of the next process in ActiveProcessLinks.
-     * @param kProcessAddress: offset of _KPROCESS structure of the current process
-     * @param DirectoryTableBase: DirectoryTableBase of the current process
-     * @param file: file stream
-     * @return: offset of _KPROCESS structure of the next process
-     */
-
     uint64_t flinkVirtAddr;
     readPhysicalMemory(kProcessAddress + ACTIVE_PROCESS_LINKS_FLINK, &flinkVirtAddr, sizeof(uint64_t), file);
     uint64_t flinkPhysAddr = virtualToPhysicalAddress(flinkVirtAddr, DirectoryTableBase, file);
@@ -190,16 +186,15 @@ uint64_t getNextProcessKProcess(uint64_t kProcessAddress, uint64_t DirectoryTabl
     return nextProcessKProcess;
 }
 
+/**
+ * Get the offset of _KPROCESS structure of the previous process in ActiveProcessLinks.
+ * @param kProcessAddress: offset of _KPROCESS structure of the current process
+ * @param DirectoryTableBase: DirectoryTableBase of the current process
+ * @param file: file stream
+ * @return: offset of _KPROCESS structure of the previous process
+ */
 uint64_t getPreviousProcessKProcess(uint64_t kProcessAddress, uint64_t DirectoryTableBase, std::ifstream &file)
 {
-    /*
-     * Get the offset of _KPROCESS structure of the previous process in ActiveProcessLinks.
-     * @param kProcessAddress: offset of _KPROCESS structure of the current process
-     * @param DirectoryTableBase: DirectoryTableBase of the current process
-     * @param file: file stream
-     * @return: offset of _KPROCESS structure of the previous process
-     */
-
     uint64_t blinkVirtAddr;
     readPhysicalMemory(kProcessAddress + ACTIVE_PROCESS_LINKS_BLINK, &blinkVirtAddr, sizeof(uint64_t), file);
     uint64_t blinkPhysAddr = virtualToPhysicalAddress(blinkVirtAddr, DirectoryTableBase, file);
@@ -209,15 +204,14 @@ uint64_t getPreviousProcessKProcess(uint64_t kProcessAddress, uint64_t Directory
     return previousProcessKProcess;
 }
 
+/**
+ * Get the name of the process.
+ * @param kProcessAddress: offset of _KPROCESS structure of the process
+ * @param file: file stream
+ * @return: name of the process
+ */
 std::string getProcessName(uint64_t kProcessAddress, std::ifstream &file)
 {
-    /*
-     * Get the name of the process.
-     * @param kProcessAddress: offset of _KPROCESS structure of the process
-     * @param file: file stream
-     * @return: name of the process
-     */
-
     char processName[15];
     readPhysicalMemory(kProcessAddress + IMAGE_FILE_NAME, processName, 15, file);
 
@@ -230,16 +224,15 @@ std::string getProcessName(uint64_t kProcessAddress, std::ifstream &file)
     return processNameStr;
 }
 
+/**
+ * Get the list of processes.
+ * @param systemKProcessAddress: offset of _KPROCESS structure of the system process
+ * @param systemDirectoryTableBase: DirectoryTableBase of the system process
+ * @param file: file stream
+ * @return: list of processes
+ */
 std::vector<Process> getProcessList(uint64_t systemKProcessAddress, uint64_t systemDirectoryTableBase, std::ifstream &file)
 {
-    /*
-     * Get the list of processes.
-     * @param systemKProcessAddress: offset of _KPROCESS structure of the system process
-     * @param systemDirectoryTableBase: DirectoryTableBase of the system process
-     * @param file: file stream
-     * @return: list of processes
-     */
-
     std::vector<Process> processList;
 
     uint64_t curProcessKProcess = systemKProcessAddress;
@@ -270,16 +263,15 @@ std::vector<Process> getProcessList(uint64_t systemKProcessAddress, uint64_t sys
     return processList;
 }
 
+/**
+ * Get the offset of _RTL_AVL_TREE structure of the process.
+ * @param kProcessPhysAddr: offset of _KPROCESS structure of the process
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: offset of _RTL_AVL_TREE structure of the process
+ */
 uint64_t getVadRootPhysicalAddress(uint64_t kProcessPhysAddr, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-    /*
-     * Get the offset of _RTL_AVL_TREE structure of the process.
-     * @param kProcessPhysAddr: offset of _KPROCESS structure of the process
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: offset of _RTL_AVL_TREE structure of the process
-     */
-
     uint64_t vadRootVirtAddr;
     readPhysicalMemory(kProcessPhysAddr + VAD_ROOT, &vadRootVirtAddr, sizeof(uint64_t), file);
     uint64_t vadRootPhysAddr = virtualToPhysicalAddress(vadRootVirtAddr, DirectoryTableBase, file);
@@ -287,16 +279,15 @@ uint64_t getVadRootPhysicalAddress(uint64_t kProcessPhysAddr, uint64_t Directory
     return vadRootPhysAddr;
 }
 
+/**
+ * Get the offset of _RTL_BALANCED_NODE structure of the left node.
+ * @param nodePhysAddr: offset of _RTL_BALANCED_NODE structure of the current node
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: offset of _RTL_BALANCED_NODE structure of the left node
+ */
 uint64_t getLeftNodePhysicalAddress(uint64_t nodePhysAddr, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-    /*
-     * Get the offset of _RTL_BALANCED_NODE structure of the left node.
-     * @param nodePhysAddr: offset of _RTL_BALANCED_NODE structure of the current node
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: offset of _RTL_BALANCED_NODE structure of the left node
-     */
-
     uint64_t leftVirtAddr;
     readPhysicalMemory(nodePhysAddr, &leftVirtAddr, sizeof(uint64_t), file);
 
@@ -310,16 +301,15 @@ uint64_t getLeftNodePhysicalAddress(uint64_t nodePhysAddr, uint64_t DirectoryTab
     return leftPhysAddr;
 }
 
+/**
+ * Get the offset of _RTL_BALANCED_NODE structure of the right node.
+ * @param nodePhysAddr: offset of _RTL_BALANCED_NODE structure of the current node
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: offset of _RTL_BALANCED_NODE structure of the right node
+ */
 uint64_t getRightNodePhysicalAddress(uint64_t nodePhysAddr, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-    /*
-     * Get the offset of _RTL_BALANCED_NODE structure of the right node.
-     * @param nodePhysAddr: offset of _RTL_BALANCED_NODE structure of the current node
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: offset of _RTL_BALANCED_NODE structure of the right node
-     */
-
     uint64_t rightVirtAddr;
     readPhysicalMemory(nodePhysAddr + RIGHT_CHILD, &rightVirtAddr, sizeof(uint64_t), file);
 
@@ -333,16 +323,15 @@ uint64_t getRightNodePhysicalAddress(uint64_t nodePhysAddr, uint64_t DirectoryTa
     return rightPhysAddr;
 }
 
+/**
+ * Get the offset of _RTL_BALANCED_NODE structure of the parent node.
+ * @param nodePhysAddr: offset of _RTL_BALANCED_NODE structure of the current node
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: offset of _RTL_BALANCED_NODE structure of the parent node
+ */
 uint64_t getParentNodePhysicalAddress(uint64_t nodePhysAddr, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-    /*
-     * Get the offset of _RTL_BALANCED_NODE structure of the parent node.
-     * @param nodePhysAddr: offset of _RTL_BALANCED_NODE structure of the current node
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: offset of _RTL_BALANCED_NODE structure of the parent node
-     */
-
     uint64_t parentValueVirtAddr;
     readPhysicalMemory(nodePhysAddr + PARENT_VALUE, &parentValueVirtAddr, sizeof(uint64_t), file);
     parentValueVirtAddr = parentValueVirtAddr & (~0x7);
@@ -351,16 +340,15 @@ uint64_t getParentNodePhysicalAddress(uint64_t nodePhysAddr, uint64_t DirectoryT
     return parentValuePhysAddr;
 }
 
+/**
+ * Read the _MMVAD_SHORT structure of the node and calculate the start and end of the page assigned to node.
+ * @param nodePhysicalAddress: offset of _MMVAD_SHORT structure of the node
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: VadNode structure containing the start and end of the page assigned to node
+ */
 VadNode readVadNode(uint64_t nodePhysicalAddress, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-    /*
-     * Read the _MMVAD_SHORT structure of the node and calculate the start and end of the page assigned to node.
-     * @param nodePhysicalAddress: offset of _MMVAD_SHORT structure of the node
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: VadNode structure containing the start and end of the page assigned to node
-     */
-
     ULONG StartingVpn, EndingVpn;
     UCHAR StartingVpnHigh, EndingVpnHigh;
 
@@ -375,16 +363,15 @@ VadNode readVadNode(uint64_t nodePhysicalAddress, uint64_t DirectoryTableBase, s
     return VadNode{start, end};
 }
 
+/**
+ * Read all nodes in the _RTL_AVL_TREE structure of the process.
+ * @param nodePhysicalAddress: offset of _MMVAD_SHORT structure of the root node
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: vector of VadNode structures
+ */
 std::vector<VadNode> readVadTree(uint64_t nodePhysicalAddress, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-    /*
-     * Read all nodes in the _RTL_AVL_TREE structure of the process.
-     * @param nodePhysicalAddress: offset of _MMVAD_SHORT structure of the root node
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: vector of VadNode structures
-     */
-
     uint64_t leftNode = getLeftNodePhysicalAddress(nodePhysicalAddress, DirectoryTableBase, file);
     uint64_t rightNode = getRightNodePhysicalAddress(nodePhysicalAddress, DirectoryTableBase, file);
 
@@ -408,16 +395,15 @@ std::vector<VadNode> readVadTree(uint64_t nodePhysicalAddress, uint64_t Director
     return nodes;
 }
 
+/**
+ * Read all nodes in the _RTL_AVL_TREE structure of the process.
+ * @param kProcessPhysicalAddress: offset of _EPROCESS structure of the process
+ * @param DirectoryTableBase: DirectoryTableBase of the process
+ * @param file: file stream
+ * @return: vector of VadNode structures
+ */
 std::vector<VadNode> readProcessVadTree(uint64_t kProcessPhysicalAddress, uint64_t DirectoryTableBase, std::ifstream& file)
 {
-/*
-     * Read all nodes in the _RTL_AVL_TREE structure of the process.
-     * @param kProcessPhysicalAddress: offset of _EPROCESS structure of the process
-     * @param DirectoryTableBase: DirectoryTableBase of the process
-     * @param file: file stream
-     * @return: vector of VadNode structures
-     */
-
     uint64_t vadRoot = getVadRootPhysicalAddress(kProcessPhysicalAddress, DirectoryTableBase, file);
     return readVadTree(vadRoot, DirectoryTableBase, file);
 }

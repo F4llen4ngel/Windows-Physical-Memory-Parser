@@ -3,7 +3,7 @@
 #include "memory.h"
 
 
-#define TEST_FILE "/Users/ivanlebedev/dev/Win11PhysMemoryParser/2.raw"
+#define TEST_FILE "../2.raw"
 
 
 TEST_CASE("Test findSystemKProcessAddress")

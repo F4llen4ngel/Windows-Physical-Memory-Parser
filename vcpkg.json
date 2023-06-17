@@ -1,0 +1,10 @@
+{
+  "name" : "dudedumper",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "1e90576cf5e931fa1b59ea289b9615fef6441306",
+  "dependencies" : [ {
+    "name" : "doctest",
+    "version>=" : "2.4.11",
+    "$comment" : "    # this is heuristically generated, and may not be correct\n\n    find_package(doctest CONFIG REQUIRED)\n\n    target_link_libraries(main PRIVATE doctest::doctest)\n"
+  } ]
+}
